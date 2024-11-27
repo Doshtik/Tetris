@@ -1,0 +1,2 @@
+player1 - 12000
+player2 - 400
