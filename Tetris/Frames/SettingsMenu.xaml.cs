@@ -25,41 +25,37 @@ namespace Tetris.Frames
         public static double MasterVolume { get; private set; } = 5;
         public static double SoundVolume { get; private set; } = 10;
         public static double MusicVolume { get; private set; } = 10;
+
+        public static string Difficulty { get; private set; }
         public static int DifficultyModificator { get; private set; }
 
-        private Dictionary<string, double> _difficulty;
+        private static Dictionary<string, int> _difficultyDict = new Dictionary<string, int>();
         #endregion
 
         #region Конструктор
         public SettingsMenu()
         {
             InitializeComponent();
-            InitDictOfDifficulty();
             switch (MainWindow.DictLanguage)
             {
                 case "rus":
                     this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryRus.xaml") };
+                    _difficultyDict.Add("Легко", 1);
+                    _difficultyDict.Add("Сложно", 2);
                     break;
                 case "eng":
                     this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryEng.xaml") };
+                    _difficultyDict.Add("Easy", 1);
+                    _difficultyDict.Add("Hard", 2);
                     break;
             }
 
-            difficultyComboBox.ItemsSource = _difficulty.Keys;
+            difficultyComboBox.ItemsSource = _difficultyDict.Keys;
             DifficultyModificator = 1;
 
             masterSlider.Value = MasterVolume;
             soundSlider.Value = SoundVolume;
             musicSlider.Value = MusicVolume;
-        }
-        #endregion
-
-        #region Метод инициализации
-        private void InitDictOfDifficulty()
-        {
-            _difficulty = new Dictionary<string, double>();
-            _difficulty.Add("Easy", 1);
-            _difficulty.Add("Hard", 2);
         }
         #endregion
 
@@ -83,16 +79,20 @@ namespace Tetris.Frames
             switch (difficultyComboBox.SelectedItem)
             {
                 case "Easy":
-                    Debug.Print($"Выбран легкий уровень: {_difficulty["Easy"]}");
+                    Difficulty = "Easy";
+                    DifficultyModificator = _difficultyDict["Easy"];
                     break;
-                case "Medium":
-                    Debug.Print($"Выбран средний уровень: {_difficulty["Medium"]}");
+                case "Легко":
+                    Difficulty = "Easy";
+                    DifficultyModificator = _difficultyDict["Easy"];
                     break;
                 case "Hard":
-                    Debug.Print($"Выбран сложный уровень: {_difficulty["Hard"]}");
+                    Difficulty = "Hard";
+                    DifficultyModificator = _difficultyDict["Hard"];
                     break;
-                case "VeryHard":
-                    Debug.Print($"Выбран очень сложный уровень: {_difficulty["VeryHard"]}");
+                case "Сложно":
+                    Difficulty = "Hard";
+                    DifficultyModificator = _difficultyDict["Hard"];
                     break;
             }
         }

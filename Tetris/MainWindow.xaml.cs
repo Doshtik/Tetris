@@ -24,7 +24,6 @@ namespace Tetris
 
         private CancellationTokenSource _cts;
         private Task _gameLoopTask;
-        private Task _delay;
 
         #region Поля, хранящие изображения клеток и фигур
         private readonly Image[,] imageControls;
@@ -53,9 +52,9 @@ namespace Tetris
         #endregion
 
         #region Поля для определения скорости падения фигур
-        private readonly int maxDelay = 1000;
-        private readonly int minDelay = 100;
-        private int delayDecrease = 25;
+        private readonly int _maxDelay = 1000;
+        private int _minDelay;
+        private int _delayDecrease = 25;
         #endregion
 
         private bool _isKeyDownPressed = false;
@@ -67,9 +66,20 @@ namespace Tetris
         public MainWindow()
         {
             InitializeComponent();
+
             MainWindow.DictLanguage = "rus";
             this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryRus.xaml") };
             _scoreText = ScoreText.Text;
+
+            switch(SettingsMenu.Difficulty)
+            {
+                case "Easy":
+                    _minDelay = 100; 
+                    break;
+                case "Hard":
+                    _minDelay = 75;
+                    break;
+            }
             imageControls = InitGameCanvas(gameState.GameGrid);
             MainFrame.Content = new StartGameMenu();
         }
@@ -178,7 +188,7 @@ namespace Tetris
 
                 while (!gameState.GameOver && !token.IsCancellationRequested)
                 {
-                    int delay = Math.Max(minDelay, maxDelay - (gameState.ClearedRows * delayDecrease));
+                    int delay = Math.Max(_minDelay, _maxDelay - (gameState.ClearedRows * _delayDecrease * SettingsMenu.DifficultyModificator));
                     await Task.Delay(delay);
                     while (IsGamePaused && !token.IsCancellationRequested)
                     {
@@ -248,8 +258,6 @@ namespace Tetris
             }
         }
         #endregion
-
-
 
         #region Метод считывающий нажатия клавиц
         private void Window_KeyDown(object sender, KeyEventArgs e)
