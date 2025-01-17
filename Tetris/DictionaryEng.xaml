@@ -1,0 +1,92 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Style x:Key="ScoreText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Score: "/>
+    </Style>
+
+    <Style x:Key="HoldText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Hold"/>
+    </Style>
+
+    <Style x:Key="NextText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Next"/>
+    </Style>
+
+    <Style x:Key="TetrisHead" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Tetris"/>
+    </Style>
+
+    <Style x:Key="bttnStartGame" TargetType="Button" >
+        <Setter Property="Content" Value="Start Game"/>
+    </Style>
+
+    <Style x:Key="bttnSettings" TargetType="Button" >
+        <Setter Property="Content" Value="Settings"/>
+    </Style>
+
+    <Style x:Key="bttnHowtoPlay" TargetType="Button" >
+        <Setter Property="Content" Value="How to Play"/>
+    </Style>
+
+    <Style x:Key="bttnExit" TargetType="Button" >
+        <Setter Property="Content" Value="Exit Game"/>
+    </Style>
+
+    <Style x:Key="img_ChangeLanguage" TargetType="Image" >
+        <Setter Property="Source" Value="Assets/USAFlag.png"/>
+    </Style>
+
+    <Style x:Key="PauseText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Pause"/>
+    </Style>
+
+    <Style x:Key="bttnContinue" TargetType="Button" >
+        <Setter Property="Content" Value="Continue"/>
+    </Style>
+
+    <Style x:Key="GameOverHead" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Game Over"/>
+    </Style>
+
+    <Style x:Key="bttnPlayAgain" TargetType="Button" >
+        <Setter Property="Content" Value="Play Again"/>
+    </Style>
+
+    <Style x:Key="bttnLeaderBoard" TargetType="Button" >
+        <Setter Property="Content" Value="LeaderBoard"/>
+    </Style>
+
+    <Style x:Key="LeaderBoardHead" TargetType="TextBlock">
+        <Setter Property="Text" Value="LeaderBoard" />
+    </Style>
+
+    <Style x:Key="bttnClose" TargetType="Button" >
+        <Setter Property="Content" Value="Back"/>
+    </Style>
+
+    <Style x:Key="bttnMainMenu" TargetType="Button">
+        <Setter Property="Content" Value="Main Menu" />
+    </Style>
+
+    <Style x:Key="SettingsHead" TargetType="TextBlock">
+        <Setter Property="Text" Value="Settings"/>
+    </Style>
+
+    <Style x:Key="difficultyLevel" TargetType="TextBlock">
+        <Setter Property="Text" Value="Difficulty level:"/>
+    </Style>
+
+    <Style x:Key="masterVolumeBlock" TargetType="TextBlock">
+        <Setter Property="Text" Value="Master volume:"/>
+    </Style>
+
+    <Style x:Key="soundVolumeBlock" TargetType="TextBlock">
+        <Setter Property="Text" Value="Sound volume:"/>
+    </Style>
+
+    <Style x:Key="musicVolumeBlock" TargetType="TextBlock">
+        <Setter Property="Text" Value="Music volume:"/>
+    </Style>
+
+</ResourceDictionary>

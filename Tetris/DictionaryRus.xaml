@@ -1,0 +1,93 @@
+﻿ <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="ScoreText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Счёт: "/>
+    </Style>
+
+    <Style x:Key="HoldText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Удержать"/>
+    </Style>
+
+    <Style x:Key="NextText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Далее"/>
+    </Style>
+
+    <Style x:Key="TetrisHead" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Тетрис"/>
+    </Style>
+
+    <Style x:Key="bttnStartGame" TargetType="Button" >
+        <Setter Property="Content" Value="Начать игру"/>
+    </Style>
+
+    <Style x:Key="bttnSettings" TargetType="Button" >
+        <Setter Property="Content" Value="Настройки"/>
+    </Style>
+
+    <Style x:Key="bttnHowtoPlay" TargetType="Button" >
+        <Setter Property="Content" Value="Как Играть"/>
+    </Style>
+
+    <Style x:Key="bttnExit" TargetType="Button" >
+        <Setter Property="Content" Value="Выйти из Игры"/>
+    </Style>
+
+    <Style x:Key="img_ChangeLanguage" TargetType="Image" >
+        <Setter Property="Source" Value="Assets/RussiaFlag.png"/>
+    </Style>
+
+    <Style x:Key="PauseText" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Пауза"/>
+    </Style>
+
+    <Style x:Key="bttnContinue" TargetType="Button" >
+        <Setter Property="Content" Value="Продолжить"/>
+    </Style>
+
+    <Style x:Key="GameOverHead" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Конец Игры"/>
+    </Style>
+
+    <Style x:Key="bttnPlayAgain" TargetType="Button" >
+        <Setter Property="Content" Value="Начать Заново"/>
+    </Style>
+
+    <Style x:Key="bttnLeaderBoard" TargetType="Button" >
+        <Setter Property="Content" Value="Таблица Лидеров"/>
+    </Style>
+
+    <Style x:Key="LeaderBoardHead" TargetType="TextBlock">
+        <Setter Property="Text" Value="Таблица Лидеров" />
+    </Style>
+
+    <Style x:Key="bttnClose" TargetType="Button" >
+        <Setter Property="Content" Value="Назад"/>
+    </Style>
+
+    <Style x:Key="bttnMainMenu" TargetType="Button">
+        <Setter Property="Content" Value="В Главное Меню" />
+    </Style>
+
+    <Style x:Key="SettingsHead" TargetType="TextBlock">
+        <Setter Property="Text" Value="Настройки"/>
+    </Style>
+
+    <Style x:Key="difficultyLevel" TargetType="TextBlock">
+        <Setter Property="Text" Value="Уровень сложности:"/>
+    </Style>
+
+    <Style x:Key="masterVolumeBlock" TargetType="TextBlock">
+        <Setter Property="Text" Value="Общая громкость:"/>
+    </Style>
+
+    <Style x:Key="soundVolumeBlock" TargetType="TextBlock">
+        <Setter Property="Text" Value="Громкость звука:"/>
+    </Style>
+
+    <Style x:Key="musicVolumeBlock" TargetType="TextBlock">
+        <Setter Property="Text" Value="Громкость музыки:"/>
+    </Style>
+     
+
+</ResourceDictionary>
