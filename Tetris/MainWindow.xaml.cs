@@ -53,7 +53,7 @@ namespace Tetris
 
         #region Поля для определения скорости падения фигур
         private readonly int _maxDelay = 1000;
-        private int _minDelay;
+        private int _minDelay = 100;
         private int _delayDecrease = 25;
         #endregion
 
@@ -70,16 +70,6 @@ namespace Tetris
             MainWindow.DictLanguage = "rus";
             this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryRus.xaml") };
             _scoreText = ScoreText.Text;
-
-            switch(SettingsMenu.Difficulty)
-            {
-                case "Easy":
-                    _minDelay = 100; 
-                    break;
-                case "Hard":
-                    _minDelay = 75;
-                    break;
-            }
             imageControls = InitGameCanvas(gameState.GameGrid);
             MainFrame.Content = new StartGameMenu();
         }
@@ -181,6 +171,7 @@ namespace Tetris
                     await Task.Delay(500);
                 }
                 SetLanguage();
+                MessageBox.Show($"{SettingsMenu.DifficultyModificator}");
 
                 GameField.Visibility = Visibility.Visible;
 

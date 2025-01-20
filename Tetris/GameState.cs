@@ -93,16 +93,16 @@ namespace Tetris
             switch (cleared)
             {
                 case 1:
-                    Score += 100;
+                    Score += 100 * SettingsMenu.DifficultyModificator;
                     break;
                 case 2:
-                    Score += 300;
+                    Score += 300 * SettingsMenu.DifficultyModificator;
                     break;
                 case 3:
-                    Score += 700;
+                    Score += 700 * SettingsMenu.DifficultyModificator;
                     break;
                 case 4:
-                    Score += 1500;
+                    Score += 1500 * SettingsMenu.DifficultyModificator;
                     break;
             }
 

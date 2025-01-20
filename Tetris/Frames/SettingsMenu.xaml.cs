@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,10 +28,32 @@ namespace Tetris.Frames
         public static double SoundVolume { get; private set; } = 10;
         public static double MusicVolume { get; private set; } = 10;
 
-        public static string Difficulty { get; private set; }
-        public static int DifficultyModificator { get; private set; }
+        protected class Difficulty
+        {
+            public int Difficult { get; set; }
+            public Difficulty(int value) => Difficult = value;
+        }
+        public static int DifficultyModificator
+        {
+            get;
+            /*{
+                using (FileStream fr = new FileStream("config.json", FileMode.OpenOrCreate))
+                {
+                    Difficulty? difficulty = JsonSerializer.Deserialize<Difficulty>(fr);
+                    return difficulty?.Difficult ?? 1;
+                }
+            }*/
+            private set;
+            /*{
+                using (FileStream fs = new FileStream("config.json", FileMode.OpenOrCreate))
+                {
+                    Difficulty difficulty = new Difficulty(value);
+                    JsonSerializer.SerializeAsync<Difficulty>(fs, difficulty);
+                }
+            }*/
+        } = 1;
 
-        private static Dictionary<string, int> _difficultyDict = new Dictionary<string, int>();
+        private static List<string> _difficultyDict = new List<string>();
         #endregion
 
         #region Конструктор
@@ -40,18 +64,17 @@ namespace Tetris.Frames
             {
                 case "rus":
                     this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryRus.xaml") };
-                    _difficultyDict.Add("Легко", 1);
-                    _difficultyDict.Add("Сложно", 2);
+                    _difficultyDict.Add("Легко");
+                    _difficultyDict.Add("Сложно");
                     break;
                 case "eng":
                     this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryEng.xaml") };
-                    _difficultyDict.Add("Easy", 1);
-                    _difficultyDict.Add("Hard", 2);
+                    _difficultyDict.Add("Easy");
+                    _difficultyDict.Add("Hard");
                     break;
             }
 
-            difficultyComboBox.ItemsSource = _difficultyDict.Keys;
-            DifficultyModificator = 1;
+            difficultyComboBox.ItemsSource = _difficultyDict.GetRange(0, _difficultyDict.Count);
 
             masterSlider.Value = MasterVolume;
             soundSlider.Value = SoundVolume;
@@ -79,20 +102,16 @@ namespace Tetris.Frames
             switch (difficultyComboBox.SelectedItem)
             {
                 case "Easy":
-                    Difficulty = "Easy";
-                    DifficultyModificator = _difficultyDict["Easy"];
+                    DifficultyModificator = 1;
                     break;
                 case "Легко":
-                    Difficulty = "Easy";
-                    DifficultyModificator = _difficultyDict["Easy"];
+                    DifficultyModificator = 1;
                     break;
                 case "Hard":
-                    Difficulty = "Hard";
-                    DifficultyModificator = _difficultyDict["Hard"];
+                    DifficultyModificator = 2;
                     break;
                 case "Сложно":
-                    Difficulty = "Hard";
-                    DifficultyModificator = _difficultyDict["Hard"];
+                    DifficultyModificator = 2;
                     break;
             }
         }

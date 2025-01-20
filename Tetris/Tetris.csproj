@@ -30,6 +30,7 @@
     <None Remove="Assets\TileRed.png" />
     <None Remove="Assets\TileYellow.png" />
     <None Remove="Assets\USAFlag.png" />
+    <None Remove="config.json" />
     <None Remove="LeaderBoard.txt" />
   </ItemGroup>
 
@@ -57,6 +58,7 @@
     <Resource Include="Assets\TileRed.png" />
     <Resource Include="Assets\TileYellow.png" />
     <Resource Include="Assets\USAFlag.png" />
+    <Resource Include="config.json" />
     <EmbeddedResource Include="LeaderBoard.txt" />
   </ItemGroup>
 
