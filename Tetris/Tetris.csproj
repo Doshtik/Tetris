@@ -59,7 +59,7 @@
     <Resource Include="Assets\TileYellow.png" />
     <Resource Include="Assets\USAFlag.png" />
     <Resource Include="config.json" />
-    <EmbeddedResource Include="LeaderBoard.txt" />
+    <Resource Include="LeaderBoard.txt" />
   </ItemGroup>
 
 </Project>
