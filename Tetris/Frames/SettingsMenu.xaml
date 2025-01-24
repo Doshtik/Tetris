@@ -82,22 +82,22 @@
                       VerticalAlignment="Center" 
                       SelectedIndex="0" BorderBrush="White" >
                 
-                    <ComboBox.Background>
-                        <LinearGradientBrush EndPoint="0,1">
-                            <GradientStop Color="#FFF0F0F0"/>
-                            <GradientStop Color="White" Offset="1"/>
-                        </LinearGradientBrush>
-                    </ComboBox.Background>
-                </ComboBox>
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
 
-                <Slider x:Name="masterSlider"
-                    Grid.Column="1" Grid.Row="2"
-                    VerticalAlignment="Center"
-                    Minimum="0" Maximum="10"
-                    Value="5"
-                    Margin="15" Width="200"
-                    ValueChanged="masterSlider_Changed" 
-                    Foreground="#FFE5E5E5" />
+            <Slider x:Name="masterSlider"
+                Grid.Column="1" Grid.Row="2"
+                VerticalAlignment="Center"
+                Minimum="0" Maximum="10"
+                Value="5"
+                Margin="15" Width="200"
+                ValueChanged="masterSlider_Changed" 
+                Foreground="#FFE5E5E5" />
 
             <Slider x:Name="soundSlider"
                     Grid.Column="1" Grid.Row="3"

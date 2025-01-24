@@ -53,13 +53,14 @@ namespace Tetris.Frames
             }*/
         } = 1;
 
-        private static List<string> _difficultyDict = new List<string>();
+        private static List<string> _difficultyDict;
         #endregion
 
         #region Конструктор
         public SettingsMenu()
         {
             InitializeComponent();
+            _difficultyDict = new List<string>();
             switch (MainWindow.DictLanguage)
             {
                 case "rus":

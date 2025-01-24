@@ -173,13 +173,15 @@ namespace Tetris
                 SetLanguage();
                 //MessageBox.Show($"{SettingsMenu.DifficultyModificator}");
 
+                Draw(gameState);
+                
                 GameField.Visibility = Visibility.Visible;
 
-                Draw(gameState);
+                int difficulty = SettingsMenu.DifficultyModificator;
 
                 while (!gameState.GameOver && !token.IsCancellationRequested)
                 {
-                    int delay = Math.Max(_minDelay, _maxDelay - (gameState.ClearedRows * _delayDecrease * SettingsMenu.DifficultyModificator));
+                    int delay = Math.Max(_minDelay, _maxDelay - (gameState.ClearedRows * _delayDecrease * difficulty));
                     await Task.Delay(delay);
                     while (IsGamePaused && !token.IsCancellationRequested)
                     {
@@ -352,6 +354,16 @@ namespace Tetris
 
                 leaderBoardMenu.LeaderBoardTopFive.Items.Clear();
 
+                if (LeaderBoard.PlayerList.Count < 5) 
+                {
+                    for (int i = 1; i <= 5; i++)
+                    {
+                        User user = new User("player" + i, 2500 * i);
+                        LeaderBoard.AddLineInList(user);
+                    }
+                    LeaderBoard.UpdateLeaderBoardList();
+                }
+
                 for (int i = 0; i < 5; i++)
                 {
                     ListBoxItem item = new ListBoxItem();
@@ -388,8 +400,8 @@ namespace Tetris
         }
         private void bttnMainMenu_Click(object sender, RoutedEventArgs e)
         {
-            bttnPlayAgain_Click(sender, e);
             IsGameStarted = false;
+            bttnPlayAgain_Click(sender, e);
             MainFrame.Content = new StartGameMenu();
         }
         #endregion
