@@ -34,28 +34,28 @@
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10"
-                    Click="bttnStartGame_Click" />
+                    Click="bttnStartGame_Click" BorderBrush="{x:Null}" />
 
             <Button x:Name="bttnSettings"
                     Style="{DynamicResource bttnSettings}"
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10"
-                    Click="bttnSettings_Click"/>
+                    Click="bttnSettings_Click" BorderBrush="{x:Null}"/>
 
             <Button x:Name="bttnHowtoPlay"
                     Style="{DynamicResource bttnHowtoPlay}"
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10"
-                    Click="bttnHowToPlay_Click"/>
+                    Click="bttnHowToPlay_Click" BorderBrush="{x:Null}"/>
 
             <Button x:Name="bttnExit"
                     Style="{DynamicResource bttnExit}"
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10"
-                    Click="bttnExit_Click"/>
+                    Click="bttnExit_Click" BorderBrush="{x:Null}"/>
         </StackPanel>
 
         <Button x:Name="bttnChangeLanguage"

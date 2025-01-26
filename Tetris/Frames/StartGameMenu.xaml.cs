@@ -39,8 +39,7 @@ namespace Tetris.Frames
         #region Кнопки
         private void bttnStartGame_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.IsGameStarted = true;
-            NavigationService.Navigate(null);
+            NavigationService.Navigate(new GameRulesMenu());
         }
         private void bttnChangeLanguage_Click(object sender, RoutedEventArgs e)
         {

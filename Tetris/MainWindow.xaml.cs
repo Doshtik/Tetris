@@ -166,14 +166,14 @@ namespace Tetris
         {
             try
             {
+                Draw(gameState);
+
                 while (!IsGameStarted)
                 {
                     await Task.Delay(500);
                 }
                 SetLanguage();
                 //MessageBox.Show($"{SettingsMenu.DifficultyModificator}");
-
-                Draw(gameState);
                 
                 GameField.Visibility = Visibility.Visible;
 

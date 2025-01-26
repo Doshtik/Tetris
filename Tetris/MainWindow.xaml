@@ -108,28 +108,28 @@
                         Background="White"
                         Margin="0,20,0,0"
                         Padding="10"
-                        Click="bttnContinue_Click"/>
+                        Click="bttnContinue_Click" BorderBrush="{x:Null}"/>
 
                 <Button x:Name="bttnPause_Restart"
                         Style="{DynamicResource bttnPlayAgain}"
                         Background="White"
                         Margin="0,20,0,0"
                         Padding="10"
-                        Click="bttnPlayAgain_Click"/>
+                        Click="bttnPlayAgain_Click" BorderBrush="{x:Null}"/>
 
                 <Button x:Name="bttnPause_Settings"
                         Style="{DynamicResource bttnSettings}"
                         Background="White"
                         Margin="0,20,0,0"
                         Padding="10"
-                        Click="bttnSettings_Click"/>
+                        Click="bttnSettings_Click" BorderBrush="{x:Null}"/>
 
                 <Button x:Name="bttnPause_Exit"
                         Style="{DynamicResource bttnExit}"
                         Background="White"
                         Margin="0,20,0,0"
                         Padding="10"
-                        Click="bttnExit_Click"/>
+                        Click="bttnExit_Click" BorderBrush="{x:Null}"/>
             </StackPanel>
 
             <Button x:Name="bttnPause_ChangeLanguage"
@@ -138,7 +138,7 @@
                     HorizontalAlignment="Right"
                     Height="50"
                     Width="50"
-                    Click="bttnChangeLanguage_Click">
+                    Click="bttnChangeLanguage_Click" BorderBrush="{x:Null}">
                 <Image x:Name="imgPause_ChangeLanguage"
                        Style="{DynamicResource img_ChangeLanguage}"
                        Width="auto"
@@ -172,28 +172,28 @@
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10"
-                    Click="bttnPlayAgain_Click"/>
+                    Click="bttnPlayAgain_Click" BorderBrush="{x:Null}"/>
 
                 <Button x:Name="bttnLeaderBoard"
                     Style="{DynamicResource bttnLeaderBoard}"
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10" 
-                    Click="bttnOpenLB_Click"/>
+                    Click="bttnOpenLB_Click" BorderBrush="{x:Null}"/>
 
                 <Button x:Name="bttnMainMenu"
                     Style="{DynamicResource bttnMainMenu}"
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10" 
-                    Click="bttnMainMenu_Click"/>
+                    Click="bttnMainMenu_Click" BorderBrush="{x:Null}"/>
 
                 <Button x:Name="bttnExitGame"
                     Style="{DynamicResource bttnExit}"
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10"
-                    Click="bttnExit_Click"/>
+                    Click="bttnExit_Click" BorderBrush="{x:Null}"/>
 
             </StackPanel>
         </Grid>
