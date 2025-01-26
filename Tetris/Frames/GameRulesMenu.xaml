@@ -20,12 +20,15 @@
                 <GradientStop Color="#FFFF2F00" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Content="Button" 
+        
+        
+        <Button Content="Назад" 
                 HorizontalAlignment="Center" 
                 Margin="20,20,20,20" 
                 VerticalAlignment="Bottom" 
                 Click="BttnNext_Click" 
-                Padding="10" Background="White" BorderBrush="{x:Null}"/>
-
+                Padding="10" 
+                Background="White" 
+                BorderBrush="{x:Null}"/>
     </Grid>
 </Page>

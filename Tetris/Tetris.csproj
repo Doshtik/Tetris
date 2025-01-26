@@ -19,6 +19,10 @@
     <None Remove="Assets\Block-S.png" />
     <None Remove="Assets\Block-T.png" />
     <None Remove="Assets\Block-Z.png" />
+    <None Remove="Assets\Button_ArrowUP.png" />
+    <None Remove="Assets\Button_C.png" />
+    <None Remove="Assets\Button_Space.png" />
+    <None Remove="Assets\Button_X.png" />
     <None Remove="Assets\Icon.ico" />
     <None Remove="Assets\RussiaFlag.png" />
     <None Remove="Assets\TileBlue.png" />
@@ -48,6 +52,10 @@
     <Resource Include="Assets\Block-S.png" />
     <Resource Include="Assets\Block-T.png" />
     <Resource Include="Assets\Block-Z.png" />
+    <Resource Include="Assets\Button_ArrowUP.png" />
+    <Resource Include="Assets\Button_C.png" />
+    <Resource Include="Assets\Button_Space.png" />
+    <Resource Include="Assets\Button_X.png" />
     <Resource Include="Assets\Icon.ico" />
     <Resource Include="Assets\RussiaFlag.png" />
     <Resource Include="Assets\TileBlue.png" />

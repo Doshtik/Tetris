@@ -43,12 +43,15 @@
                     Padding="10"
                     Click="bttnSettings_Click" BorderBrush="{x:Null}"/>
 
+            <!--
             <Button x:Name="bttnHowtoPlay"
                     Style="{DynamicResource bttnHowtoPlay}"
                     Background="White"
                     Margin="0,20,0,0"
                     Padding="10"
-                    Click="bttnHowToPlay_Click" BorderBrush="{x:Null}"/>
+                    Click="bttnHowToPlay_Click" 
+                    BorderBrush="{x:Null}"/>
+            -->
 
             <Button x:Name="bttnExit"
                     Style="{DynamicResource bttnExit}"
