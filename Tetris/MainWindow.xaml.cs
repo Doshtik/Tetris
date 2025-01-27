@@ -177,7 +177,7 @@ namespace Tetris
                 GameField.Visibility = Visibility.Visible;
 
                 int difficulty = SettingsMenu.DifficultyModificator;
-
+                
                 while (!gameState.GameOver && !token.IsCancellationRequested)
                 {
                     int delay = Math.Max(_minDelay, _maxDelay - (gameState.ClearedRows * _delayDecrease * difficulty));

@@ -25,9 +25,9 @@ namespace Tetris.Frames
     public partial class SettingsMenu : Page
     {
         #region Поля и свойства
-        public static double MasterVolume { get; private set; } = 5;
-        public static double SoundVolume { get; private set; } = 10;
-        public static double MusicVolume { get; private set; } = 10;
+        public static double MasterVolume { get; private set; }
+        public static double SoundVolume { get; private set; }
+        public static double MusicVolume { get; private set; }
 
         protected class Difficulty
         {
@@ -122,14 +122,24 @@ namespace Tetris.Frames
                     break;
             }
 
+            if (!File.Exists("config.txt"))
+            {
+                CreateConfigFile("config.txt");
+            }
+
             difficultyComboBox.ItemsSource = _difficultyDict.GetRange(0, _difficultyDict.Count);
-            difficultyComboBox.SelectedIndex = DifficultyModificator - 1;
+
+            if (DifficultyModificator == 1)
+                difficultyComboBox.SelectedIndex = 0;
+            else
+                difficultyComboBox.SelectedIndex = 1;
 
             masterSlider.Value = MasterVolume;
             soundSlider.Value = SoundVolume;
             musicSlider.Value = MusicVolume;
         }
         #endregion
+
 
         #region Методы работы со звуком
         private void masterSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -145,6 +155,17 @@ namespace Tetris.Frames
             MusicVolume = Math.Round(e.NewValue / 10, 2);
         }
         #endregion
+
+        public static void CreateConfigFile(string filename)
+        {
+            using (StreamWriter sw = File.CreateText(filename))
+            {
+                sw.WriteLine("difficulty = 1");
+                sw.WriteLine("master_volume = 0.5");
+                sw.WriteLine("music_volume = 1.0");
+                sw.WriteLine("sound_volume = 1.0");
+            }
+        }
 
         private void bttnExit_Click(object sender, RoutedEventArgs e)
         {
