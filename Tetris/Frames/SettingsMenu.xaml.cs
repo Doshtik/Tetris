@@ -25,10 +25,39 @@ namespace Tetris.Frames
     public partial class SettingsMenu : Page
     {
         #region Поля и свойства
-        public static double MasterVolume { get; private set; }
-        public static double SoundVolume { get; private set; }
-        public static double MusicVolume { get; private set; }
-
+        public static double MasterVolume
+        {
+            get
+            {
+                return GetDoubleValueFromConfigFile("master_volume");
+            }
+            private set
+            {
+                SetValueToConfigFile<double>("master_volume", value);
+            }
+        }
+        public static double SoundVolume
+        {
+            get
+            {
+                return GetDoubleValueFromConfigFile("sound_volume");
+            }
+            private set
+            {
+                SetValueToConfigFile<double>("sound_volume", value);
+            }
+        }
+        public static double MusicVolume 
+        {
+            get
+            {
+                return GetDoubleValueFromConfigFile("music_volume");
+            }
+            private set
+            {
+                SetValueToConfigFile<double>("music_volume", value);
+            }
+        }
         protected class Difficulty
         {
             public int Difficult { get; set; }
@@ -38,65 +67,11 @@ namespace Tetris.Frames
         {
             get
             {
-                using (var sr = new StreamReader("config.txt"))
-                {
-                    int difficulty = 0;
-                    while (!sr.EndOfStream)
-                    {
-                        string line = sr.ReadLine();
-                        if (line != String.Empty)
-                        {
-                            if (line.Split(" = ")[0] == "difficulty")
-                            {
-                                difficulty = int.Parse(line.Split(" = ")[1]);
-                            }
-                        }
-                    }
-
-                    if (difficulty == 0)
-                        return 1;
-                    else
-                        return difficulty;
-                }
+                return GetIntValueFromConfigFile("difficulty");
             }
             private set
             {
-                string filename = "config.txt";
-                using (var sr = new StreamReader(filename))
-                using (var sw = new StreamWriter(filename + ".tmp", false))
-                {
-                    while (!sr.EndOfStream)
-                    {
-                        string line = sr.ReadLine();
-                        if (line != null)
-                        {
-                            if (sr.EndOfStream)
-                            {
-                                if (line.Split(" = ")[0] == "difficulty")
-                                {
-                                    sw.Write("difficulty = " + value);
-                                }
-                                else
-                                {
-                                    sw.Write(line);
-                                }
-                            }
-                            else
-                            {
-                                if (line.Split(" = ")[0] == "difficulty")
-                                {
-                                    sw.WriteLine("difficulty = " + value);
-                                }
-                                else
-                                {
-                                    sw.WriteLine(line);
-                                }
-                            }
-                        }
-                    }
-                }
-                File.Delete(filename);
-                File.Move(filename + ".tmp", filename);
+                SetValueToConfigFile<int>("difficulty", value);
             }
         }
 
@@ -140,7 +115,6 @@ namespace Tetris.Frames
         }
         #endregion
 
-
         #region Методы работы со звуком
         private void masterSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -155,6 +129,112 @@ namespace Tetris.Frames
             MusicVolume = Math.Round(e.NewValue / 10, 2);
         }
         #endregion
+
+        private static int GetIntValueFromConfigFile(string field)
+        {
+            using (var sr = new StreamReader("config.txt"))
+            {
+                int difficulty = 0;
+                while (!sr.EndOfStream)
+                {
+                    string line = sr.ReadLine();
+                    if (line != String.Empty)
+                    {
+                        if (line.Split(" = ")[0] == field)
+                        {
+                            difficulty = int.Parse(line.Split(" = ")[1]);
+                        }
+                    }
+                }
+
+                if (difficulty == 0)
+                    return 1;
+                else
+                    return difficulty;
+            }
+        }
+        private static double GetDoubleValueFromConfigFile(string field)
+        {
+            using (var sr = new StreamReader("config.txt"))
+            {
+                double value = 0;
+                while (!sr.EndOfStream)
+                {
+                    string line = sr.ReadLine();
+                    if (line != String.Empty)
+                    {
+                        if (line.Split(" = ")[0] == field)
+                        {
+                            value = double.Parse(line.Split(" = ")[1]);
+                        }
+                    }
+                }
+
+                if (value == 0)
+                    return 1.0;
+                else
+                    return value;
+            }
+        }
+        /*private T GetValueFromConfigFile<T>(string field)
+        {
+            using (var sr = new StreamReader("config.txt"))
+            {
+                T value = default(T);
+                while (!sr.EndOfStream)
+                {
+                    string line = sr.ReadLine();
+                    if (line != String.Empty)
+                    {
+                        if (line.Split(" = ")[0] == field)
+                        {
+                            value = T.Parse(line.Split(" = ")[1]);
+                        }
+                    }
+                }
+
+                return value;
+            }
+        }*/
+        private static void SetValueToConfigFile<T>(string field, T value)
+        {
+            string filename = "config.txt";
+            using (var sr = new StreamReader(filename))
+            using (var sw = new StreamWriter(filename + ".tmp", false))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string line = sr.ReadLine();
+                    if (line != null)
+                    {
+                        if (sr.EndOfStream)
+                        {
+                            if (line.Split(" = ")[0] == field)
+                            {
+                                sw.Write(field + " = " + value);
+                            }
+                            else
+                            {
+                                sw.Write(line);
+                            }
+                        }
+                        else
+                        {
+                            if (line.Split(" = ")[0] == field)
+                            {
+                                sw.WriteLine(field + " = " + value);
+                            }
+                            else
+                            {
+                                sw.WriteLine(line);
+                            }
+                        }
+                    }
+                }
+            }
+            File.Delete(filename);
+            File.Move(filename + ".tmp", filename);
+        }
 
         public static void CreateConfigFile(string filename)
         {
