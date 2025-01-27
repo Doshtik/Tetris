@@ -22,7 +22,7 @@ namespace Tetris
         private static void RewriteLeaderBoard()
         {
             string tempPath = _path + ".tmp";
-            using (StreamWriter streamWriter = new StreamWriter(tempPath, false)) // и сразу же пишем во временный файл
+            using (var streamWriter = new StreamWriter(tempPath, false)) // и сразу же пишем во временный файл
             {
                 for (int i = 0; i < PlayerList.Count; i++)
                     if (i == PlayerList.Count - 1)
@@ -37,22 +37,22 @@ namespace Tetris
         {
             int i = 0;
             string tempPath = _path + ".tmp";
-            using (StreamReader streamReader = new StreamReader(_path)) // читаем
-            using (StreamWriter streamWriter = new StreamWriter(tempPath, false)) // и сразу же пишем во временный файл
+            using (var sr = new StreamReader(_path)) // читаем
+            using (var sw = new StreamWriter(tempPath, false)) // и сразу же пишем во временный файл
             {
-                while (!streamReader.EndOfStream)
+                while (!sr.EndOfStream)
                 {
-                    string line = streamReader.ReadLine();
-                    if (streamReader.EndOfStream)
+                    string line = sr.ReadLine();
+                    if (sr.EndOfStream)
                         if (lineIndex == i)
-                            streamWriter.Write($"{player.Field}");
+                            sw.Write($"{player.Field}");
                         else
-                            streamWriter.Write(line);
+                            sw.Write(line);
                     else
                         if (lineIndex == i)
-                            streamWriter.WriteLine($"{player.Field}");
+                            sw.WriteLine($"{player.Field}");
                         else
-                            streamWriter.WriteLine(line);
+                            sw.WriteLine(line);
                     i++;
                 }
             }
@@ -61,7 +61,7 @@ namespace Tetris
         }
         public static void AddLineInList(User player)
         {
-            using (StreamWriter writer = new StreamWriter(_path, true))
+            using (var writer = new StreamWriter(_path, true))
             {
                 writer.Write($"\n{player.Field}");
             }
@@ -72,7 +72,7 @@ namespace Tetris
         public static void UpdateLeaderBoardList()
         {
             List<User> players = new List<User>();
-            using (StreamReader streamReader = new StreamReader(_path))
+            using (var streamReader = new StreamReader(_path))
             {
                 int itterator = 0;
                 while (!streamReader.EndOfStream)

@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Shell;
 
 namespace Tetris.Frames
 {
@@ -35,23 +36,69 @@ namespace Tetris.Frames
         }
         public static int DifficultyModificator
         {
-            get;
-            /*{
-                using (FileStream fr = new FileStream("config.json", FileMode.OpenOrCreate))
+            get
+            {
+                using (var sr = new StreamReader("config.txt"))
                 {
-                    Difficulty? difficulty = JsonSerializer.Deserialize<Difficulty>(fr);
-                    return difficulty?.Difficult ?? 1;
+                    int difficulty = 0;
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+                        if (line != String.Empty)
+                        {
+                            if (line.Split(" = ")[0] == "difficulty")
+                            {
+                                difficulty = int.Parse(line.Split(" = ")[1]);
+                            }
+                        }
+                    }
+
+                    if (difficulty == 0)
+                        return 1;
+                    else
+                        return difficulty;
                 }
-            }*/
-            private set;
-            /*{
-                using (FileStream fs = new FileStream("config.json", FileMode.OpenOrCreate))
+            }
+            private set
+            {
+                string filename = "config.txt";
+                using (var sr = new StreamReader(filename))
+                using (var sw = new StreamWriter(filename + ".tmp", false))
                 {
-                    Difficulty difficulty = new Difficulty(value);
-                    JsonSerializer.SerializeAsync<Difficulty>(fs, difficulty);
+                    while (!sr.EndOfStream)
+                    {
+                        string line = sr.ReadLine();
+                        if (line != null)
+                        {
+                            if (sr.EndOfStream)
+                            {
+                                if (line.Split(" = ")[0] == "difficulty")
+                                {
+                                    sw.Write("difficulty = " + value);
+                                }
+                                else
+                                {
+                                    sw.Write(line);
+                                }
+                            }
+                            else
+                            {
+                                if (line.Split(" = ")[0] == "difficulty")
+                                {
+                                    sw.WriteLine("difficulty = " + value);
+                                }
+                                else
+                                {
+                                    sw.WriteLine(line);
+                                }
+                            }
+                        }
+                    }
                 }
-            }*/
-        } = 1;
+                File.Delete(filename);
+                File.Move(filename + ".tmp", filename);
+            }
+        }
 
         private static List<string> _difficultyDict;
         #endregion
@@ -76,6 +123,7 @@ namespace Tetris.Frames
             }
 
             difficultyComboBox.ItemsSource = _difficultyDict.GetRange(0, _difficultyDict.Count);
+            difficultyComboBox.SelectedIndex = DifficultyModificator - 1;
 
             masterSlider.Value = MasterVolume;
             soundSlider.Value = SoundVolume;
@@ -98,28 +146,22 @@ namespace Tetris.Frames
         }
         #endregion
 
-        private void DifficultyComboBox_Selected(object sender, RoutedEventArgs e)
-        {
-            switch (difficultyComboBox.SelectedItem)
-            {
-                case "Easy":
-                    DifficultyModificator = 1;
-                    break;
-                case "Легко":
-                    DifficultyModificator = 1;
-                    break;
-                case "Hard":
-                    DifficultyModificator = 2;
-                    break;
-                case "Сложно":
-                    DifficultyModificator = 2;
-                    break;
-            }
-        }
-
         private void bttnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void difficultyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (difficultyComboBox.SelectedIndex)
+            {
+                case 0:
+                    DifficultyModificator = 1;
+                    break;
+                case 1:
+                    DifficultyModificator = 2;
+                    break;
+            }
         }
     }
 }

@@ -173,7 +173,6 @@ namespace Tetris
                     await Task.Delay(500);
                 }
                 SetLanguage();
-                //MessageBox.Show($"{SettingsMenu.DifficultyModificator}");
                 
                 GameField.Visibility = Visibility.Visible;
 
@@ -187,6 +186,7 @@ namespace Tetris
                     {
                         PauseMenu.Visibility = Visibility.Visible;
                         await Task.Delay(500);
+                        difficulty = SettingsMenu.DifficultyModificator;
                     }
                     PauseMenu.Visibility = Visibility.Hidden;
 

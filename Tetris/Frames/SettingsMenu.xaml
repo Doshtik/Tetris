@@ -77,8 +77,9 @@
             <ComboBox x:Name="difficultyComboBox"
                       Grid.Column="1" Grid.Row="1"
                       Margin="15"
-                      VerticalAlignment="Center" 
-                      SelectedIndex="0" BorderBrush="White" >
+                      SelectionChanged="difficultyComboBox_SelectionChanged"
+                      VerticalAlignment="Center"
+                      BorderBrush="White" >
                 
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1">
