@@ -24,6 +24,12 @@ namespace Tetris.Frames
     /// </summary>
     public partial class SettingsMenu : Page
     {
+        protected class Difficulty
+        {
+            public int Difficult { get; set; }
+            public Difficulty(int value) => Difficult = value;
+        }
+
         #region Поля и свойства
         public static double MasterVolume
         {
@@ -57,11 +63,6 @@ namespace Tetris.Frames
             {
                 SetValueToConfigFile<double>("music_volume", value);
             }
-        }
-        protected class Difficulty
-        {
-            public int Difficult { get; set; }
-            public Difficulty(int value) => Difficult = value;
         }
         public static int DifficultyModificator
         {
