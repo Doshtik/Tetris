@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetDoubleValueFromConfigFile("master_volume");
+                return GetValueFromConfigFile<Double>("master_volume");
             }
             private set
             {
@@ -46,7 +47,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetDoubleValueFromConfigFile("sound_volume");
+                return GetValueFromConfigFile<Double>("sound_volume");
             }
             private set
             {
@@ -57,7 +58,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetDoubleValueFromConfigFile("music_volume");
+                return GetValueFromConfigFile<Double>("music_volume");
             }
             private set
             {
@@ -68,7 +69,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetIntValueFromConfigFile("difficulty");
+                return GetValueFromConfigFile<Int32>("difficulty");
             }
             private set
             {
@@ -131,72 +132,39 @@ namespace Tetris.Frames
         }
         #endregion
 
-        private static int GetIntValueFromConfigFile(string field)
+        #region Методы работы с конфигом
+        public static void CreateConfigFile(string filename)
         {
-            using (var sr = new StreamReader("config.txt"))
+            using (StreamWriter sw = File.CreateText(filename))
             {
-                int difficulty = 0;
-                while (!sr.EndOfStream)
-                {
-                    string line = sr.ReadLine();
-                    if (line != String.Empty)
-                    {
-                        if (line.Split(" = ")[0] == field)
-                        {
-                            difficulty = int.Parse(line.Split(" = ")[1]);
-                        }
-                    }
-                }
-
-                if (difficulty == 0)
-                    return 1;
-                else
-                    return difficulty;
+                sw.WriteLine("difficulty = 1");
+                sw.WriteLine("master_volume = 0.5");
+                sw.WriteLine("music_volume = 1.0");
+                sw.WriteLine("sound_volume = 1.0");
             }
         }
-        private static double GetDoubleValueFromConfigFile(string field)
+        private static T GetValueFromConfigFile<T>(string field)
         {
             using (var sr = new StreamReader("config.txt"))
             {
-                double value = 0;
                 while (!sr.EndOfStream)
                 {
-                    string line = sr.ReadLine();
-                    if (line != String.Empty)
+                    string line = sr.ReadLine()?.Trim();
+                    if (string.IsNullOrEmpty(line)) continue;
+
+                    string[] parts = line.Split(" = ");
+                    if (parts[0].Equals(field, StringComparison.OrdinalIgnoreCase))
                     {
-                        if (line.Split(" = ")[0] == field)
+                        TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
+                        if (converter != null && converter.CanConvertFrom(typeof(string)))
                         {
-                            value = double.Parse(line.Split(" = ")[1]);
+                            return (T)converter.ConvertFromString(parts[1]);
                         }
                     }
                 }
-
-                if (value == 0)
-                    return 1.0;
-                else
-                    return value;
             }
+            return default(T);
         }
-        /*private T GetValueFromConfigFile<T>(string field)
-        {
-            using (var sr = new StreamReader("config.txt"))
-            {
-                T value = default(T);
-                while (!sr.EndOfStream)
-                {
-                    string line = sr.ReadLine();
-                    if (line != String.Empty)
-                    {
-                        if (line.Split(" = ")[0] == field)
-                        {
-                            value = T.Parse(line.Split(" = ")[1]);
-                        }
-                    }
-                }
-
-                return value;
-            }
-        }*/
         private static void SetValueToConfigFile<T>(string field, T value)
         {
             string filename = "config.txt";
@@ -236,18 +204,9 @@ namespace Tetris.Frames
             File.Delete(filename);
             File.Move(filename + ".tmp", filename);
         }
+        #endregion
 
-        public static void CreateConfigFile(string filename)
-        {
-            using (StreamWriter sw = File.CreateText(filename))
-            {
-                sw.WriteLine("difficulty = 1");
-                sw.WriteLine("master_volume = 0.5");
-                sw.WriteLine("music_volume = 1.0");
-                sw.WriteLine("sound_volume = 1.0");
-            }
-        }
-
+        #region События
         private void bttnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
@@ -265,5 +224,6 @@ namespace Tetris.Frames
                     break;
             }
         }
+        #endregion
     }
 }
