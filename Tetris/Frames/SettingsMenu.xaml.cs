@@ -25,12 +25,6 @@ namespace Tetris.Frames
     /// </summary>
     public partial class SettingsMenu : Page
     {
-        protected class Difficulty
-        {
-            public int Difficult { get; set; }
-            public Difficulty(int value) => Difficult = value;
-        }
-
         #region Поля и свойства
         public static double MasterVolume
         {
@@ -83,7 +77,11 @@ namespace Tetris.Frames
         #region Конструктор
         public SettingsMenu()
         {
+            if (!File.Exists("config.txt")) 
+                CreateConfigFile("config.txt");
+
             InitializeComponent();
+
             _difficultyDict = new List<string>();
             switch (MainWindow.DictLanguage)
             {
@@ -97,11 +95,6 @@ namespace Tetris.Frames
                     _difficultyDict.Add("Easy");
                     _difficultyDict.Add("Hard");
                     break;
-            }
-
-            if (!File.Exists("config.txt"))
-            {
-                CreateConfigFile("config.txt");
             }
 
             difficultyComboBox.ItemsSource = _difficultyDict.GetRange(0, _difficultyDict.Count);
