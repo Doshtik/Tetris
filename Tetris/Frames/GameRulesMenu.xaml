@@ -167,6 +167,7 @@
         <Button x:Name="bttnNextTutorial"
                 VerticalAlignment="Bottom" 
                 Style="{DynamicResource bttnNextTutorial}"
+                Click="BttnNext_Click"
                 Padding="10"
                 Margin="30,0,30,20"
                 Background="White" 
