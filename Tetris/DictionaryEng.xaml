@@ -89,4 +89,35 @@
         <Setter Property="Text" Value="Music volume:"/>
     </Style>
 
+    <Style x:Key="TutorialHead" TargetType="TextBlock">
+        <Setter Property="Text" Value="Tutorial:"/>
+    </Style>
+
+    <Style x:Key="SideMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Move Left and Right"/>
+    </Style>
+
+    <Style x:Key="RotationMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Clocwise/CountercClockwise Rotation"/>
+    </Style>
+
+    <Style x:Key="DownOneMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Down One Block"/>
+    </Style>
+
+    <Style x:Key="DownSpaceMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Down to the Stop"/>
+    </Style>
+
+    <Style x:Key="InHoldTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — In Hold"/>
+    </Style>
+
+    <Style x:Key="InPauseTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Pause Menu"/>
+    </Style>
+
+    <Style x:Key="bttnNextTutorial" TargetType="Button">
+        <Setter Property="Content" Value="Next" />
+    </Style>
 </ResourceDictionary>

@@ -88,6 +88,36 @@
     <Style x:Key="musicVolumeBlock" TargetType="TextBlock">
         <Setter Property="Text" Value="Громкость музыки:"/>
     </Style>
-     
 
+    <Style x:Key="TutorialHead" TargetType="TextBlock">
+        <Setter Property="Text" Value="Обучение:"/>
+    </Style>
+
+    <Style x:Key="SideMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Движение влево и вправо"/>
+    </Style>
+
+    <Style x:Key="RotationMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Поворот по/против часовой стрелки"/>
+    </Style>
+
+    <Style x:Key="DownOneMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Вниз на один блок"/>
+    </Style>
+
+    <Style x:Key="DownSpaceMovementTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Вниз до упора"/>
+    </Style>
+
+    <Style x:Key="InHoldTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — В 'кармашек'"/>
+    </Style>
+
+    <Style x:Key="InPauseTutorial" TargetType="TextBlock">
+        <Setter Property="Text" Value=" — Меню паузы"/>
+    </Style>
+
+    <Style x:Key="bttnNextTutorial" TargetType="Button">
+        <Setter Property="Content" Value="Далее" />
+    </Style>
 </ResourceDictionary>

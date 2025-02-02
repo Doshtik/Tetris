@@ -23,6 +23,15 @@ namespace Tetris.Frames
         public GameRulesMenu()
         {
             InitializeComponent();
+            switch (MainWindow.DictLanguage)
+            {
+                case "rus":
+                    this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryRus.xaml") };
+                    break;
+                case "eng":
+                    this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryEng.xaml") };
+                    break;
+            }
         }
 
         private void BttnNext_Click(object sender, RoutedEventArgs e)
