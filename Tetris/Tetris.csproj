@@ -34,8 +34,6 @@
     <None Remove="Assets\TileRed.png" />
     <None Remove="Assets\TileYellow.png" />
     <None Remove="Assets\USAFlag.png" />
-    <None Remove="config.txt" />
-    <None Remove="LeaderBoard.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,8 +65,6 @@
     <Resource Include="Assets\TileRed.png" />
     <Resource Include="Assets\TileYellow.png" />
     <Resource Include="Assets\USAFlag.png" />
-    <Resource Include="config.txt" />
-    <Resource Include="LeaderBoard.txt" />
   </ItemGroup>
 
 </Project>

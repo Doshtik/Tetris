@@ -1,4 +1,0 @@
-player1 - 12000
-player2 - 5000
-player3 - 2500
-player4 - 500
