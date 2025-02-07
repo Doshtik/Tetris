@@ -111,15 +111,15 @@ namespace Tetris.Frames
         #endregion
 
         #region Методы работы со звуком
-        private void masterSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void MasterSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MasterVolume = Math.Round(e.NewValue / 10, 2);
         }
-        private void soundSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void SoundSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             SoundVolume = Math.Round(e.NewValue / 10, 2);
         }
-        private void musicSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void MusicSlider_Changed(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             MusicVolume = Math.Round(e.NewValue / 10, 2);
         }
@@ -200,12 +200,12 @@ namespace Tetris.Frames
         #endregion
 
         #region События
-        private void bttnExit_Click(object sender, RoutedEventArgs e)
+        private void BttnExit_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }
 
-        private void difficultyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void DifficultyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (difficultyComboBox.SelectedIndex)
             {

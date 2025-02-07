@@ -77,7 +77,7 @@
             <ComboBox x:Name="difficultyComboBox"
                       Grid.Column="1" Grid.Row="1"
                       Margin="15"
-                      SelectionChanged="difficultyComboBox_SelectionChanged"
+                      SelectionChanged="DifficultyComboBox_SelectionChanged"
                       VerticalAlignment="Center"
                       BorderBrush="White" >
                 
@@ -95,7 +95,7 @@
                 Minimum="0" Maximum="10"
                 Value="5"
                 Margin="15" Width="200"
-                ValueChanged="masterSlider_Changed" 
+                ValueChanged="MasterSlider_Changed" 
                 Foreground="#FFE5E5E5" />
 
             <Slider x:Name="soundSlider"
@@ -104,7 +104,7 @@
                     Minimum="0" Maximum="10"
                     Value="10"
                     Margin="15" Width="200"
-                    ValueChanged="soundSlider_Changed" />
+                    ValueChanged="SoundSlider_Changed" />
 
             <Slider x:Name="musicSlider"
                     Grid.Column="1" Grid.Row="4"
@@ -112,7 +112,7 @@
                     Minimum="0" Maximum="10"
                     Value="10"
                     Margin="15" Width="200"
-                    ValueChanged="musicSlider_Changed" />
+                    ValueChanged="MusicSlider_Changed" />
 
             <Button x:Name="bttnExit"
                     Style="{DynamicResource bttnClose}"
@@ -121,7 +121,7 @@
                     Padding="50 5 50 5" 
                     Background="White" 
                     BorderBrush="{x:Null}" 
-                    Click="bttnExit_Click"/>
+                    Click="BttnExit_Click"/>
         </Grid>
         </StackPanel>
     </Grid>

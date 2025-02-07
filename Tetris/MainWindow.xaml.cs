@@ -168,6 +168,7 @@ namespace Tetris
             {
                 Draw(gameState);
 
+                //В главном меню
                 while (!IsGameStarted)
                 {
                     await Task.Delay(500);
@@ -178,10 +179,14 @@ namespace Tetris
 
                 int difficulty = SettingsMenu.DifficultyModificator;
                 
+                //В игре
                 while (!gameState.GameOver && !token.IsCancellationRequested)
                 {
+                    //Подсчет времени падения
                     int delay = Math.Max(_minDelay, _maxDelay - (gameState.ClearedRows * _delayDecrease * difficulty));
                     await Task.Delay(delay);
+
+                    //В меню паузы
                     while (IsGamePaused && !token.IsCancellationRequested)
                     {
                         PauseMenu.Visibility = Visibility.Visible;
@@ -190,6 +195,7 @@ namespace Tetris
                     }
                     PauseMenu.Visibility = Visibility.Hidden;
 
+                    //Чтобы при нажатии в тайминг блок дважды вниз не спускался
                     if (_isKeyDownPressed)
                     {
                         _isKeyDownPressed = false;
@@ -202,7 +208,7 @@ namespace Tetris
                     Draw(gameState);
                 }
             }
-            catch (OperationCanceledException) { }
+            catch (OperationCanceledException) { } //Необходимо при перезапуске игры с меню паузы
 
             //Высчитывание результатов и внесение в таблицу
             User player = new User(LeaderBoard.Name, gameState.Score);

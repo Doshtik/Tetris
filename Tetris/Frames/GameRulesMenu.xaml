@@ -21,156 +21,158 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <TextBlock x:Name="TutorialTitle"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Top"
-                   Style="{DynamicResource TutorialHead}"
-                   FontSize="48"/>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            <TextBlock x:Name="TutorialTitle"
+                       HorizontalAlignment="Center"
+                       Style="{DynamicResource TutorialHead}"
+                       FontSize="48"/>
 
-        <Border Background="White"
-                CornerRadius="10"
-                Margin="30,75,30,100" Padding="10,10,10,10">
+            <Border Background="White"
+                    CornerRadius="10"
+                    Margin="0,10,0,10" 
+                    Padding="10,10,10,10">
 
-            <Grid Margin="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="3*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                <StackPanel HorizontalAlignment="Center" 
-                            Grid.Column="0"
-                            Grid.Row="0"
-                            Orientation="Horizontal">
-                    <Image Source="../Assets/Button_Arrow.png" 
-                            Width="48" 
-                            RenderTransformOrigin="0.5,0.5"
-                            Margin="10 0 10 0">
-                        <Image.RenderTransform>
-                            <TransformGroup>
-                                <RotateTransform Angle="-90"/>
-                            </TransformGroup>
-                        </Image.RenderTransform>
-                    </Image>
-                    <Image Source="../Assets/Button_Arrow.png" 
+                    <StackPanel HorizontalAlignment="Center" 
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Orientation="Horizontal">
+                        <Image Source="../Assets/Button_Arrow.png" 
+                                Width="48" 
+                                RenderTransformOrigin="0.5,0.5"
+                                Margin="10 0 10 0">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="-90"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                        <Image Source="../Assets/Button_Arrow.png" 
+                               Width="48" 
+                               RenderTransformOrigin="0.5,0.5"
+                               Margin="10 0 10 0">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <RotateTransform Angle="90"/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+                        </Image>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Center"
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Orientation="Horizontal">
+                        <Image Source="../Assets/Button_Arrow.png" 
+                               Width="48" 
+                               Margin="10 0 10 0">
+                        </Image>
+                        <Image Source="../Assets/Button_C.png" 
+                               Width="48"
+                               Margin="10 0 10 0">
+                        </Image>
+                    </StackPanel>
+
+                    <Image HorizontalAlignment="Center"
+                           Grid.Column="0"
+                           Grid.Row="2"
+                           Source="../Assets/Button_Arrow.png" 
                            Width="48" 
                            RenderTransformOrigin="0.5,0.5"
                            Margin="10 0 10 0">
                         <Image.RenderTransform>
                             <TransformGroup>
-                                <RotateTransform Angle="90"/>
+                                <RotateTransform Angle="180"/>
                             </TransformGroup>
                         </Image.RenderTransform>
                     </Image>
-                </StackPanel>
 
-                <StackPanel HorizontalAlignment="Center"
-                            Grid.Column="0"
-                            Grid.Row="1"
-                            Orientation="Horizontal">
-                    <Image Source="../Assets/Button_Arrow.png" 
-                           Width="48" 
-                           Margin="10 0 10 0">
+                    <Image HorizontalAlignment="Center"
+                           Grid.Column="0"
+                           Grid.Row="3"
+                           Source="../Assets/Button_Space.png" 
+                           Width="66">
                     </Image>
-                    <Image Source="../Assets/Button_C.png" 
-                           Width="48"
-                           Margin="10 0 10 0">
+
+                    <Image HorizontalAlignment="Center"
+                           Grid.Column="0"
+                           Grid.Row="4"
+                           Source="../Assets/Button_X.png" 
+                           Width="48">
                     </Image>
-                </StackPanel>
 
-                <Image HorizontalAlignment="Center"
-                       Grid.Column="0"
-                       Grid.Row="2"
-                       Source="../Assets/Button_Arrow.png" 
-                       Width="48" 
-                       RenderTransformOrigin="0.5,0.5"
-                       Margin="10 0 10 0">
-                    <Image.RenderTransform>
-                        <TransformGroup>
-                            <RotateTransform Angle="180"/>
-                        </TransformGroup>
-                    </Image.RenderTransform>
-                </Image>
+                    <Image HorizontalAlignment="Center"
+                           Grid.Column="0"
+                           Grid.Row="5"
+                           Source="../Assets/Button_ESC.png"
+                           Width="48">
+                    </Image>
 
-                <Image HorizontalAlignment="Center"
-                       Grid.Column="0"
-                       Grid.Row="3"
-                       Source="../Assets/Button_Space.png" 
-                       Width="66">
-                </Image>
-
-                <Image HorizontalAlignment="Center"
-                       Grid.Column="0"
-                       Grid.Row="4"
-                       Source="../Assets/Button_X.png" 
-                       Width="48">
-                </Image>
-
-                <Image HorizontalAlignment="Center"
-                       Grid.Column="0"
-                       Grid.Row="5"
-                       Source="../Assets/Button_ESC.png"
-                       Width="48">
-                </Image>
-
-                <TextBlock x:Name="SideMovementTutorial"
-                            VerticalAlignment="Center"
-                            Grid.Column="1"
-                            Grid.Row="0"
-                            Margin="0 10 0 10"
-                            Foreground="Black"
-                            Style="{DynamicResource SideMovementTutorial}"/>
-                <TextBlock x:Name="RotationMovementTutorial"
-                            VerticalAlignment="Center"
-                            Grid.Column="1"
-                            Grid.Row="1"
-                            Margin="0 10 0 10"
-                            Foreground="Black"
-                            Style="{DynamicResource RotationMovementTutorial}"/>
-                <TextBlock x:Name="DownOneMovementTutorial"
-                            VerticalAlignment="Center"
-                            Grid.Column="1"
-                            Grid.Row="2"
-                            Margin="0 10 0 10"
-                            Foreground="Black"
-                            Style="{DynamicResource DownOneMovementTutorial}"/>
-                <TextBlock x:Name="DownSpaceMovementTutorial"
-                            VerticalAlignment="Center"
-                            Grid.Column="1"
-                            Grid.Row="3"
-                            Margin="0 10 0 10"
-                            Foreground="Black"
-                            Style="{DynamicResource DownSpaceMovementTutorial}"/>
-                <TextBlock x:Name="InHoldTutorial"
-                            VerticalAlignment="Center"
-                            Grid.Column="1"
-                            Grid.Row="4"
-                            Margin="0 10 0 10"
-                            Foreground="Black"
-                            Style="{DynamicResource InHoldTutorial}"/>
-                <TextBlock x:Name="InPauseTutorial"
-                            VerticalAlignment="Center"
-                            Grid.Column="1"
-                            Grid.Row="5"
-                            Margin="0 10 0 10"
-                            Foreground="Black"
-                            Style="{DynamicResource InPauseTutorial}"/>
-            </Grid>
-        </Border>
-        <Button x:Name="bttnNextTutorial"
-                VerticalAlignment="Bottom" 
-                Style="{DynamicResource bttnNextTutorial}"
-                Click="BttnNext_Click"
-                Padding="10"
-                Margin="30,0,30,20"
-                Background="White" 
-                BorderBrush="{x:Null}"/>
+                    <TextBlock x:Name="SideMovementTutorial"
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Margin="0 10 0 10"
+                                Foreground="Black"
+                                Style="{DynamicResource SideMovementTutorial}"/>
+                    <TextBlock x:Name="RotationMovementTutorial"
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Margin="0 10 0 10"
+                                Foreground="Black"
+                                Style="{DynamicResource RotationMovementTutorial}"/>
+                    <TextBlock x:Name="DownOneMovementTutorial"
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                Margin="0 10 0 10"
+                                Foreground="Black"
+                                Style="{DynamicResource DownOneMovementTutorial}"/>
+                    <TextBlock x:Name="DownSpaceMovementTutorial"
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                Margin="0 10 0 10"
+                                Foreground="Black"
+                                Style="{DynamicResource DownSpaceMovementTutorial}"/>
+                    <TextBlock x:Name="InHoldTutorial"
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                Grid.Row="4"
+                                Margin="0 10 0 10"
+                                Foreground="Black"
+                                Style="{DynamicResource InHoldTutorial}"/>
+                    <TextBlock x:Name="InPauseTutorial"
+                                VerticalAlignment="Center"
+                                Grid.Column="1"
+                                Grid.Row="5"
+                                Margin="0 10 0 10"
+                                Foreground="Black"
+                                Style="{DynamicResource InPauseTutorial}"/>
+                </Grid>
+            </Border>
+            <Button x:Name="bttnNextTutorial"
+                    VerticalAlignment="Bottom" 
+                    Style="{DynamicResource bttnNextTutorial}"
+                    Click="BttnNext_Click"
+                    Padding="10"
+                    Background="White" 
+                    BorderBrush="{x:Null}"/>
+        </StackPanel>
     </Grid>
 </Page>
