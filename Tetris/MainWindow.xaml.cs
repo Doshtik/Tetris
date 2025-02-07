@@ -302,7 +302,7 @@ namespace Tetris
         }
         #endregion
 
-        //Метод смены языка
+        #region Метод смены языка
         public void SetLanguage()
         {
             switch (MainWindow.DictLanguage)
@@ -322,6 +322,7 @@ namespace Tetris
             ScoreText.Text = $"{_scoreText}{gameState.Score}";
             FinalScoreText.Text = $"{_scoreText}{gameState.Score}";
         }
+        #endregion
 
         #region Кнопки
         private void bttnChangeLanguage_Click(object sender, RoutedEventArgs e)

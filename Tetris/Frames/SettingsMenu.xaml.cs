@@ -30,7 +30,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetValueFromConfigFile<Double>("master_volume");
+                return GetValueFromConfigFile<double>("master_volume");
             }
             private set
             {
@@ -41,7 +41,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetValueFromConfigFile<Double>("sound_volume");
+                return GetValueFromConfigFile<double>("sound_volume");
             }
             private set
             {
@@ -52,7 +52,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetValueFromConfigFile<Double>("music_volume");
+                return GetValueFromConfigFile<double>("music_volume");
             }
             private set
             {
@@ -63,7 +63,7 @@ namespace Tetris.Frames
         {
             get
             {
-                return GetValueFromConfigFile<Int32>("difficulty");
+                return GetValueFromConfigFile<int>("difficulty");
             }
             private set
             {

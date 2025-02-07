@@ -39,11 +39,8 @@ namespace Tetris
         #region Свойства удержания фигуры
         public Block HeldBlock { get; private set; }
         public bool CanHold { get; private set; }
-        
         public bool GameOver { get; set; }
-        
         public int Score { get; private set; }
-        
         public int ClearedRows { get; private set; }
         #endregion
 
@@ -53,7 +50,6 @@ namespace Tetris
             GameGrid = new GameGrid(22, 10);
             BlockQueue = new BlockQueue();
             CurrentBlock = BlockQueue.GetAndUpdate();
-
             CanHold = true;
             GameOver = false;
         }
