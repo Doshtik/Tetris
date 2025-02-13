@@ -7,6 +7,7 @@ using System.Reflection.PortableExecutable;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Shell;
+using Tetris.Frames;
 
 namespace Tetris
 {
@@ -105,7 +106,7 @@ namespace Tetris
         {
             for (int i = 0; i < PlayerList.Count; i++)
             {
-                if (PlayerList[i].Name == Name)
+                if (PlayerList[i].Name == SettingsMenu.Name)
                 {
                     playerInList = PlayerList[i];
                     index = i;

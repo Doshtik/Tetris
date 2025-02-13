@@ -8,6 +8,7 @@ using Tetris.Frames;
 using Tetris.Blocks;
 using System.Windows.Documents;
 using System.Windows.Navigation;
+using System.IO;
 
 namespace Tetris
 {
@@ -65,6 +66,9 @@ namespace Tetris
         #region Конструктор
         public MainWindow()
         {
+            if (!File.Exists("config.txt"))
+                SettingsMenu.CreateConfigFile("config.txt");
+
             InitializeComponent();
 
             MainWindow.DictLanguage = "rus";
@@ -210,9 +214,10 @@ namespace Tetris
             }
             catch (OperationCanceledException) { } //Необходимо при перезапуске игры с меню паузы
 
-            WindowRegistration window = new WindowRegistration();
+            /*WindowRegistration window = new WindowRegistration();
             window.Owner = this;
-            window.Show();
+            window.Show();*/
+            MessageBox.Show("player_name = " + SettingsMenu.Name);
 
             //Высчитывание результатов и внесение в таблицу
             User player = new User(SettingsMenu.Name, gameState.Score);

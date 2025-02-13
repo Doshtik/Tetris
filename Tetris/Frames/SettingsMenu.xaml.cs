@@ -87,9 +87,6 @@ namespace Tetris.Frames
         #region Конструктор
         public SettingsMenu()
         {
-            if (!File.Exists("config.txt")) 
-                CreateConfigFile("config.txt");
-
             InitializeComponent();
 
             _difficultyDict = new List<string>();
@@ -159,11 +156,7 @@ namespace Tetris.Frames
                     string[] parts = line.Split(" = ");
                     if (parts[0].Equals(field, StringComparison.OrdinalIgnoreCase))
                     {
-                        TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
-                        if (converter != null && converter.CanConvertFrom(typeof(string)))
-                        {
-                            return (T)converter.ConvertFromString(parts[1]);
-                        }
+                        return (T)Convert.ChangeType(parts[1], typeof(T));
                     }
                 }
             }
@@ -182,7 +175,7 @@ namespace Tetris.Frames
                     {
                         if (sr.EndOfStream)
                         {
-                            if (line.Split(" = ")[0] == field)
+                            if (line.Split(" = ")[0].Equals(field, StringComparison.OrdinalIgnoreCase))
                             {
                                 sw.Write(field + " = " + value);
                             }
@@ -193,7 +186,7 @@ namespace Tetris.Frames
                         }
                         else
                         {
-                            if (line.Split(" = ")[0] == field)
+                            if (line.Split(" = ")[0].Equals(field, StringComparison.OrdinalIgnoreCase))
                             {
                                 sw.WriteLine(field + " = " + value);
                             }
