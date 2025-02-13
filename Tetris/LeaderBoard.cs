@@ -15,7 +15,6 @@ namespace Tetris
         #region Поля и свойства
         public static string _path = "LeaderBoard.txt";
         public static List<User> PlayerList { get; private set; } = new List<User>();
-        public static string Name { get; set; } = "Player";
         #endregion
 
         #region Методы перезаписи и записи

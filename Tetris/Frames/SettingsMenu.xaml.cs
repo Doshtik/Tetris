@@ -70,7 +70,17 @@ namespace Tetris.Frames
                 SetValueToConfigFile<int>("difficulty", value);
             }
         }
-
+        public static string Name
+        {
+            get
+            {
+                return GetValueFromConfigFile<string>("player_name");
+            }
+            private set
+            {
+                SetValueToConfigFile<string>("player_name", value);
+            }
+        }
         private static List<string> _difficultyDict;
         #endregion
 
@@ -134,6 +144,7 @@ namespace Tetris.Frames
                 sw.WriteLine("master_volume = 0.5");
                 sw.WriteLine("music_volume = 1.0");
                 sw.WriteLine("sound_volume = 1.0");
+                sw.WriteLine("player_name = Player");
             }
         }
         private static T GetValueFromConfigFile<T>(string field)

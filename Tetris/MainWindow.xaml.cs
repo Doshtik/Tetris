@@ -167,7 +167,7 @@ namespace Tetris
             try
             {
                 Draw(gameState);
-
+                
                 //В главном меню
                 while (!IsGameStarted)
                 {
@@ -210,8 +210,12 @@ namespace Tetris
             }
             catch (OperationCanceledException) { } //Необходимо при перезапуске игры с меню паузы
 
+            WindowRegistration window = new WindowRegistration();
+            window.Owner = this;
+            window.Show();
+
             //Высчитывание результатов и внесение в таблицу
-            User player = new User(LeaderBoard.Name, gameState.Score);
+            User player = new User(SettingsMenu.Name, gameState.Score);
             try
             {
                 //Список рекордсменов (Если нет - сработает обработка исключений)
