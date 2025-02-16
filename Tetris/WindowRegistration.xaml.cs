@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Tetris.Frames;
 
 namespace Tetris
 {
@@ -19,9 +20,31 @@ namespace Tetris
     /// </summary>
     public partial class WindowRegistration : Window
     {
+        private string _name;
+
         public WindowRegistration()
         {
             InitializeComponent();
+            switch (MainWindow.DictLanguage)
+            {
+                case "rus":
+                    this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryRus.xaml") };
+                    break;
+                case "eng":
+                    this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryEng.xaml") };
+                    break;
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            _name = NameChange_TextBox.Text;
+        }
+
+        private void bttn_Confirm_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsMenu.Name = _name;
+            this.Close();
         }
     }
 }

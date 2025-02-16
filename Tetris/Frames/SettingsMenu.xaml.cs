@@ -76,7 +76,7 @@ namespace Tetris.Frames
             {
                 return GetValueFromConfigFile<string>("player_name");
             }
-            private set
+            set
             {
                 SetValueToConfigFile<string>("player_name", value);
             }
@@ -151,12 +151,25 @@ namespace Tetris.Frames
                 while (!sr.EndOfStream)
                 {
                     string line = sr.ReadLine()?.Trim();
-                    if (string.IsNullOrEmpty(line)) continue;
+
+                    if (string.IsNullOrEmpty(line))
+                        continue;
 
                     string[] parts = line.Split(" = ");
-                    if (parts[0].Equals(field, StringComparison.OrdinalIgnoreCase))
+
+                    if (typeof(T) != typeof(string))
                     {
-                        return (T)Convert.ChangeType(parts[1], typeof(T));
+                        if (parts[0].Equals(field, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return (T)Convert.ChangeType(parts[1], typeof(T));
+                        }
+                    }
+                    else
+                    {
+                        if (parts[0].Equals(field, StringComparison.OrdinalIgnoreCase))
+                        {
+                            return (T)(object)parts[1];
+                        }
                     }
                 }
             }

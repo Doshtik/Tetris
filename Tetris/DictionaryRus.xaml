@@ -120,4 +120,12 @@
     <Style x:Key="bttnNextTutorial" TargetType="Button">
         <Setter Property="Content" Value="Далее" />
     </Style>
+     
+    <Style x:Key="NameChange_TextBlock" TargetType="TextBlock" >
+        <Setter Property="Text" Value="Введите ваше имя:"/>
+    </Style>
+     
+    <Style x:Key="bttn_Confirm" TargetType="Button">
+        <Setter Property="Content" Value="Подтвердить"/>
+    </Style>
 </ResourceDictionary>

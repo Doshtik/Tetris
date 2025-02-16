@@ -213,30 +213,10 @@ namespace Tetris
                 }
             }
             catch (OperationCanceledException) { } //Необходимо при перезапуске игры с меню паузы
-
-            /*WindowRegistration window = new WindowRegistration();
+            
+            WindowRegistration window = new WindowRegistration();
             window.Owner = this;
-            window.Show();*/
-            MessageBox.Show("player_name = " + SettingsMenu.Name);
-
-            //Высчитывание результатов и внесение в таблицу
-            User player = new User(SettingsMenu.Name, gameState.Score);
-            try
-            {
-                //Список рекордсменов (Если нет - сработает обработка исключений)
-                LeaderBoard.UpdateLeaderBoardList();
-                //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
-                LeaderBoard.GetCurrentUser(out User playerInList, out int index);
-                if (player.Score > playerInList.Score)
-                {
-                    LeaderBoard.RewriteLineInList(index, player);
-                }
-            }
-            catch (Exception ex)
-            {
-                LeaderBoard.AddLineInList(player);
-            }
-            LeaderBoard.UpdateLeaderBoardList();
+            window.Show();
 
             //Для меню конца игры
             FinalScoreText.Text = $"{_scoreText}{gameState.Score}";
@@ -365,7 +345,25 @@ namespace Tetris
         {
             try
             {
+                //Высчитывание результатов и внесение в таблицу
+                User player = new User(SettingsMenu.Name, gameState.Score);
+                try
+                {
+                    //Список рекордсменов (Если нет - сработает обработка исключений)
+                    LeaderBoard.UpdateLeaderBoardList();
+                    //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
+                    LeaderBoard.GetCurrentUser(out User playerInList1, out int index1);
+                    if (player.Score > playerInList1.Score)
+                    {
+                        LeaderBoard.RewriteLineInList(index1, player);
+                    }
+                }
+                catch
+                {
+                    LeaderBoard.AddLineInList(player);
+                }
                 LeaderBoard.UpdateLeaderBoardList();
+
                 LeaderBoardMenu leaderBoardMenu = new LeaderBoardMenu();
 
                 leaderBoardMenu.LeaderBoardTopFive.Items.Clear();
@@ -391,8 +389,8 @@ namespace Tetris
                     leaderBoardMenu.LeaderBoardTopFive.Items.Add(item);
                 }
 
-                LeaderBoard.GetCurrentUser(out User playerInList, out int index);
-                leaderBoardMenu.LeaderBoardCurrentPosition.Text = $"{index + 1}) {playerInList.Field}";
+                LeaderBoard.GetCurrentUser(out User playerInList2, out int index2);
+                leaderBoardMenu.LeaderBoardCurrentPosition.Text = $"{index2 + 1}) {playerInList2.Field}";
 
                 MainFrame.Content = leaderBoardMenu;
             }
