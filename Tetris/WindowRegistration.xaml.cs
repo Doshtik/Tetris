@@ -21,8 +21,9 @@ namespace Tetris
     public partial class WindowRegistration : Window
     {
         private string _name;
+        private int _score;
 
-        public WindowRegistration()
+        public WindowRegistration(int score)
         {
             InitializeComponent();
             switch (MainWindow.DictLanguage)
@@ -34,6 +35,7 @@ namespace Tetris
                     this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryEng.xaml") };
                     break;
             }
+            _score = score;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -44,7 +46,47 @@ namespace Tetris
         private void bttn_Confirm_Click(object sender, RoutedEventArgs e)
         {
             SettingsMenu.Name = _name;
+            //Высчитывание результатов и внесение в таблицу
+            User player = new User(_name, _score);
+            try
+            {
+                //Список рекордсменов (Если нет - сработает обработка исключений)
+                LeaderBoard.UpdateLeaderBoardList();
+                //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
+                LeaderBoard.GetCurrentUser(out User playerInList1, out int index1);
+                if (player.Score > playerInList1.Score)
+                {
+                    LeaderBoard.RewriteLineInList(index1, player);
+                }
+            }
+            catch
+            {
+                LeaderBoard.AddLineInList(player);
+            }
+            LeaderBoard.UpdateLeaderBoardList();
             this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //Высчитывание результатов и внесение в таблицу
+            User player = new User(SettingsMenu.Name, _score);
+            try
+            {
+                //Список рекордсменов (Если нет - сработает обработка исключений)
+                LeaderBoard.UpdateLeaderBoardList();
+                //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
+                LeaderBoard.GetCurrentUser(out User playerInList1, out int index1);
+                if (player.Score > playerInList1.Score)
+                {
+                    LeaderBoard.RewriteLineInList(index1, player);
+                }
+            }
+            catch
+            {
+                LeaderBoard.AddLineInList(player);
+            }
+            LeaderBoard.UpdateLeaderBoardList();
         }
     }
 }

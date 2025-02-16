@@ -214,7 +214,7 @@ namespace Tetris
             }
             catch (OperationCanceledException) { } //Необходимо при перезапуске игры с меню паузы
             
-            WindowRegistration window = new WindowRegistration();
+            WindowRegistration window = new WindowRegistration(gameState.Score);
             window.Owner = this;
             window.Show();
 
@@ -345,23 +345,6 @@ namespace Tetris
         {
             try
             {
-                //Высчитывание результатов и внесение в таблицу
-                User player = new User(SettingsMenu.Name, gameState.Score);
-                try
-                {
-                    //Список рекордсменов (Если нет - сработает обработка исключений)
-                    LeaderBoard.UpdateLeaderBoardList();
-                    //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
-                    LeaderBoard.GetCurrentUser(out User playerInList1, out int index1);
-                    if (player.Score > playerInList1.Score)
-                    {
-                        LeaderBoard.RewriteLineInList(index1, player);
-                    }
-                }
-                catch
-                {
-                    LeaderBoard.AddLineInList(player);
-                }
                 LeaderBoard.UpdateLeaderBoardList();
 
                 LeaderBoardMenu leaderBoardMenu = new LeaderBoardMenu();
@@ -394,9 +377,9 @@ namespace Tetris
 
                 MainFrame.Content = leaderBoardMenu;
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!");
+                MessageBox.Show("Ошибка!\n" + ex.Message);
             }
         }
         private void bttnExit_Click(object sender, RoutedEventArgs e)
