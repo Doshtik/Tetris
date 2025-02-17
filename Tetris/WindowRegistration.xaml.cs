@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Tetris.Frames;
 
 namespace Tetris
@@ -46,47 +35,13 @@ namespace Tetris
         private void bttn_Confirm_Click(object sender, RoutedEventArgs e)
         {
             SettingsMenu.Name = _name;
-            //Высчитывание результатов и внесение в таблицу
-            User player = new User(_name, _score);
-            try
-            {
-                //Список рекордсменов (Если нет - сработает обработка исключений)
-                LeaderBoard.UpdateLeaderBoardList();
-                //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
-                LeaderBoard.GetCurrentUser(out User playerInList1, out int index1);
-                if (player.Score > playerInList1.Score)
-                {
-                    LeaderBoard.RewriteLineInList(index1, player);
-                }
-            }
-            catch
-            {
-                LeaderBoard.AddLineInList(player);
-            }
-            LeaderBoard.UpdateLeaderBoardList();
+            LeaderBoard.UpdateTable(_name, _score);
             this.Close();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //Высчитывание результатов и внесение в таблицу
-            User player = new User(SettingsMenu.Name, _score);
-            try
-            {
-                //Список рекордсменов (Если нет - сработает обработка исключений)
-                LeaderBoard.UpdateLeaderBoardList();
-                //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
-                LeaderBoard.GetCurrentUser(out User playerInList1, out int index1);
-                if (player.Score > playerInList1.Score)
-                {
-                    LeaderBoard.RewriteLineInList(index1, player);
-                }
-            }
-            catch
-            {
-                LeaderBoard.AddLineInList(player);
-            }
-            LeaderBoard.UpdateLeaderBoardList();
+            LeaderBoard.UpdateTable(SettingsMenu.Name, _score);
         }
     }
 }

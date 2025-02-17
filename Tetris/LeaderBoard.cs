@@ -92,6 +92,7 @@ namespace Tetris
                 
             }
             PlayerList.Clear();
+
             IEnumerable<User> query = players.OrderBy(player => player.Score);
             foreach (User player in query)
             {
@@ -114,6 +115,29 @@ namespace Tetris
                 }
             }
             throw new Exception("Игрока нет в списке");
+        }
+
+        // Метод фиксирующий результат игрока
+        public static void UpdateTable(string name, int score)
+        {
+            //Высчитывание результатов и внесение в таблицу
+            User player = new User(name, score);
+            try
+            {
+                //Список рекордсменов (Если нет - сработает обработка исключений)
+                LeaderBoard.UpdateLeaderBoardList();
+                //Позиция игрока в списке (Если игрока в списке нет - сработает отработка исключений)
+                LeaderBoard.GetCurrentUser(out User playerInList1, out int index1);
+                if (player.Score > playerInList1.Score)
+                {
+                    LeaderBoard.RewriteLineInList(index1, player);
+                }
+            }
+            catch
+            {
+                LeaderBoard.AddLineInList(player);
+            }
+            LeaderBoard.UpdateLeaderBoardList();
         }
     }
 }
