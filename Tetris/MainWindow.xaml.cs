@@ -70,6 +70,7 @@ namespace Tetris
             MainWindow.DictLanguage = "rus";
             this.Resources = new ResourceDictionary() { Source = new Uri("pack://application:,,,/DictionaryRus.xaml") };
             _scoreText = ScoreText.Text;
+
             imageControls = InitGameCanvas(gameState.GameGrid);
             MainFrame.Content = new StartGameMenu();
         }
